@@ -92,14 +92,14 @@
             "
           >
             <q-space />
-            <q-btn
+            <!--<<q-btn
               flat
               no-wrap
               :icon="biTranslate"
               :label="currenLocale ? currenLocale.name : ''"
             >
               <q-icon class="q-ml-sm" :name="biCaretDown" size="16px" />
-              <q-menu auto-close>
+              q-menu auto-close>
                 <q-list style="min-width: 150px">
                   <q-item
                     clickable
@@ -117,7 +117,7 @@
                   </q-item>
                 </q-list>
               </q-menu>
-            </q-btn>
+            </q-btn>-->
           </q-toolbar>
           <q-card-section class="text-center">
             <q-img
