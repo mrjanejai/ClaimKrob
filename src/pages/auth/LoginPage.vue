@@ -26,24 +26,22 @@
               <q-carousel-slide name="style" class="column no-wrap flex-center">
                 <div class="q-mt-md text-center">
                   <img
-                    src="~assets/images/1.png"
+                    src="~assets/images/1.jpg"
                     style="height: 175px; width: auto"
                   />
                   <div class="text-h3 text-weight-bolder text-uppercase">
-                    Super Synapse
+                    เครมครบ โปรแกรมติดตามการเครม
                   </div>
-                  <div class="text-subtitle1 q-mt-lg">
-                    Organization culture building solution
-                  </div>
+                  <div class="text-subtitle1 q-mt-lg">เพื่อองค์กรยั่งยืน</div>
                 </div>
               </q-carousel-slide>
               <q-carousel-slide name="tv" class="column no-wrap flex-center">
                 <img
-                  src="~assets/images/2.png"
+                  src="~assets/images/2.jpg"
                   style="height: 175px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
-                  Awake hidden potentials by Connecting within.
+                  แต่ละปีกองเพิ่มมากขึ้นเรื่อยๆ และเปลี่ยนแปลงไม่จบสิ้น
                 </div>
               </q-carousel-slide>
               <q-carousel-slide
@@ -51,24 +49,20 @@
                 class="column no-wrap flex-center"
               >
                 <img
-                  src="~assets/images/3.png"
+                  src="~assets/images/3.jpg"
                   style="height: 205px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Itaque voluptatem totam, architecto cupiditate officia rerum,
-                  error dignissimos praesentium libero ab nemo.
+                  เครมครบจึงเป็นแพลตฟอร์มที่สามารถสร้างกองทุนได้เองไม่จำกัดด้วยผู้ใช้เอง
                 </div>
               </q-carousel-slide>
               <q-carousel-slide name="map" class="column no-wrap flex-center">
                 <img
-                  src="~assets/images/4.png"
+                  src="~assets/images/4.jpg"
                   style="height: 175px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Itaque voluptatem totam, architecto cupiditate officia rerum,
-                  error dignissimos praesentium libero ab nemo.
+                  เมื่อสามารถติดตามได้ทุกกองทุน โรงพยาบาลจะไม่ขาดทุนอีกต่อไป
                 </div>
               </q-carousel-slide>
             </q-carousel>

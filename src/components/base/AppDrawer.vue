@@ -25,7 +25,7 @@
           </q-item-section>
         </q-item>
 
-        <q-expansion-item icon="bi-file" label="Pages">
+        <!--<q-expansion-item icon="bi-file" label="Pages">
           <q-list class="q-pl-lg">
             <q-item to="/auth/login" active-class="q-item-no-link-highlighting">
               <q-item-section avatar>
@@ -91,7 +91,7 @@
               </q-item-section>
             </q-item>
           </q-list>
-        </q-expansion-item>
+        </q-expansion-item>-->
 
         <q-separator class="q-my-md" />
 
@@ -107,7 +107,7 @@
           </q-item-section>
         </q-item>
 
-        <q-separator class="q-mt-md q-mb-xs" />
+        <!--<q-separator class="q-mt-md q-mb-xs" />
 
         <q-item-label header class="text-weight-bold text-uppercase">
           More from Youtube
@@ -123,7 +123,7 @@
           <q-item-section>
             <q-item-label>{{ link.text }}</q-item-label>
           </q-item-section>
-        </q-item>
+        </q-item>-->
 
         <q-separator class="q-my-md" />
 
@@ -207,22 +207,22 @@ export default defineComponent({
       getYearNow,
       t,
       links1: [
-        // { icon: 'bi-house-door', text: 'Home', link: '/' },
-        { icon: 'bi-card-heading', text: 'Feed', link: '/feed' },
-        { icon: 'bi-123', text: 'Pinia Store', link: '/pinia' },
-        { icon: 'bi-translate', text: 'I18n', link: '/i18n' },
-        {
+        { icon: 'bi-house-door', text: 'Home', link: '/' },
+        //{ icon: 'bi-card-heading', text: 'Feed', link: '/feed' },
+        { icon: 'bi-123', text: 'ผูป่วยนอก', link: '/pinia' },
+        { icon: 'bi-translate', text: 'ผู้ป่วยใน', link: '/i18n' },
+        /*{
           icon: 'bi-file-arrow-down',
           text: 'Fetch data',
           link: '/fetch-data',
         },
-        { icon: 'bi-file', text: 'Tutor1', link: '/tutor1' },
+        { icon: 'bi-file', text: 'Tutor1', link: '/tutor1' },*/
       ],
       links2: [
-        { icon: 'bi-folder2', text: 'Library' },
-        { icon: 'bi-clock-history', text: 'History' },
-        { icon: 'bi-clock', text: 'Watch later' },
-        { icon: 'bi-hand-thumbs-up', text: 'Liked videos' },
+        { icon: 'bi-folder2', text: 'ตั้งค่ากองทุน' },
+        { icon: 'bi-clock-history', text: 'REP' },
+        { icon: 'bi-clock', text: 'STM' },
+        { icon: 'bi-hand-thumbs-up', text: 'เงินโอน' },
       ],
       links3: [
         { icon: 'bi-play-btn', text: 'Movies & Shows' },
