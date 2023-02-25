@@ -26,7 +26,7 @@
               <q-carousel-slide name="style" class="column no-wrap flex-center">
                 <div class="q-mt-md text-center">
                   <img
-                    src="~assets/images/ss02.png"
+                    src="~assets/images/1.png"
                     style="height: 175px; width: auto"
                   />
                   <div class="text-h3 text-weight-bolder text-uppercase">
@@ -39,7 +39,7 @@
               </q-carousel-slide>
               <q-carousel-slide name="tv" class="column no-wrap flex-center">
                 <img
-                  src="~assets/images/ss01.png"
+                  src="~assets/images/2.png"
                   style="height: 175px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
@@ -51,7 +51,7 @@
                 class="column no-wrap flex-center"
               >
                 <img
-                  src="~assets/images/all-icon.png"
+                  src="~assets/images/3.png"
                   style="height: 205px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
@@ -62,7 +62,7 @@
               </q-carousel-slide>
               <q-carousel-slide name="map" class="column no-wrap flex-center">
                 <img
-                  src="~assets/images/prize01.png"
+                  src="~assets/images/4.png"
                   style="height: 175px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
