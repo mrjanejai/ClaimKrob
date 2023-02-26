@@ -7,8 +7,11 @@ const routes: RouteRecordRaw[] = [
     meta: { requireAuth: true },
     // beforeEnter: checkAuth,
     children: [
-      //{ path: '', component: () => import('pages/IndexPage.vue') },
-      { path: '', component: () => import('@/pages/chartTypes/PieCharts.vue') },
+      { path: '', component: () => import('pages/IndexPage.vue') },
+      {
+        path: 'pieChart',
+        component: () => import('@/pages/apexCharts/PieCharts.vue'),
+      },
       { path: 'pinia', component: () => import('@/pages/PiniaPage.vue') },
       { path: 'i18n', component: () => import('@/pages/I18nPage.vue') },
       { path: 'theme', component: () => import('@/pages/ThemePage.vue') },
