@@ -209,8 +209,8 @@ export default defineComponent({
       links1: [
         { icon: 'bi-house-door', text: 'Home', link: '/' },
         //{ icon: 'bi-card-heading', text: 'Feed', link: '/feed' },
-        { icon: 'bi-123', text: 'ผูป่วยนอก', link: '/pinia' },
-        { icon: 'bi-translate', text: 'ผู้ป่วยใน', link: '/i18n' },
+        { icon: 'bi-file-medical', text: 'ผูป่วยนอก', link: '/pinia' },
+        { icon: 'bi-bandaid', text: 'ผู้ป่วยใน', link: '/i18n' },
         /*{
           icon: 'bi-file-arrow-down',
           text: 'Fetch data',
@@ -219,10 +219,10 @@ export default defineComponent({
         { icon: 'bi-file', text: 'Tutor1', link: '/tutor1' },*/
       ],
       links2: [
-        { icon: 'bi-folder2', text: 'ตั้งค่ากองทุน' },
-        { icon: 'bi-clock-history', text: 'REP' },
-        { icon: 'bi-clock', text: 'STM' },
-        { icon: 'bi-hand-thumbs-up', text: 'เงินโอน' },
+        { icon: 'bi-gear', text: 'ตั้งค่ากองทุน' },
+        { icon: 'bi-file-spreadsheet', text: 'REP' },
+        { icon: 'bi-file-spreadsheet', text: 'STM' },
+        { icon: 'bi-cash-coin', text: 'เงินโอน' },
       ],
       links3: [
         { icon: 'bi-play-btn', text: 'Movies & Shows' },
