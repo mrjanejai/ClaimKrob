@@ -46,7 +46,7 @@
 
       <q-space />
 
-      <!--<div class="YL__toolbar-input-container row no-wrap">
+      <div class="YL__toolbar-input-container row no-wrap">
         <q-input
           dense
           outlined
@@ -59,7 +59,7 @@
             <q-btn round dense flat :icon="biSearch" />
           </template>
         </q-input>
-         <q-btn
+        <!-- <q-btn
           :color="$q.dark.isActive ? 'grey-9' : 'grey-2'"
           class="YL__toolbar-input-btn"
           :text-color="$q.dark.isActive ? 'grey-3' : 'grey-9'"
@@ -67,13 +67,13 @@
           unelevated
         >
           <q-tooltip>{{ t('base.search') }}</q-tooltip>
-        </q-btn>
-      </div>-->
+        </q-btn> -->
+      </div>
 
       <q-space />
 
       <div class="q-gutter-sm row items-center no-wrap">
-        <!--<q-btn round dense flat :icon="biCameraVideo" v-if="$q.screen.gt.sm">
+        <q-btn round dense flat :icon="biCameraVideo" v-if="$q.screen.gt.sm">
           <q-tooltip>Create a video or post</q-tooltip>
         </q-btn>
         <q-btn round dense flat :icon="biAppIndicator" v-if="$q.screen.gt.sm">
@@ -85,7 +85,7 @@
         <q-btn round dense flat :icon="biBell" class="text-weight-bolder">
           <q-badge color="negative" text-color="white" floating> 2 </q-badge>
           <q-tooltip>Notifications</q-tooltip>
-        </q-btn>-->
+        </q-btn>
         <!-- <q-btn round flat> -->
         <q-btn dense flat no-wrap>
           <q-avatar class="shadow-5" round size="36px">
