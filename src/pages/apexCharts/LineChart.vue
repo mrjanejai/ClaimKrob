@@ -3,14 +3,14 @@
     <apexchart
       width="400"
       height="400"
-      type="pie"
+      type="line"
       :options="chartOptions"
       :series="chartSeries"
     ></apexchart>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import VueApexCharts from 'vue3-apexcharts';
 
 export default {
@@ -23,25 +23,18 @@ export default {
         chart: {
           width: 400,
           height: 400,
-          type: 'pie',
+          type: 'line',
         },
-        series: [],
-        labels: ['OPD', 'IPD', 'NCD', 'TMD', 'PSY', 'PHY', 'ISM'],
-        responsive: [
+        series: [
           {
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 300,
-              },
-              legend: {
-                position: 'bottom',
-              },
-            },
+            data: [77, 58, 63, 32, 58, 64, 78],
           },
         ],
+        xaxis: {
+          categories: ['OPD', 'IPD', 'NCD', 'TMD', 'PSY', 'PHY', 'ISM'],
+        },
       },
-      chartSeries: [77, 58, 63, 32, 58, 64, 78],
+      chartSeries: [],
     };
   },
 };
