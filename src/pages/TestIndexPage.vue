@@ -1,58 +1,51 @@
 <template>
-  <div id="container"></div>
+  <section class="layout">
+    <div class="d1">กองทุน 1<br /><AreaChart /></div>
+    <div class="d2">กองทุน 2<br /><BarChart /></div>
+    <div class="d3">กองทุน 3<br /><BubbleChart /></div>
+    <div class="d4">กองทุน 4<br /><LineChart /></div>
+    <div class="d5">กองทุน 5<br /><PieChart /></div>
+    <div class="d6">กองทุน 6<br /><RadarChart /></div>
+  </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import * as Highcharts from 'highcharts';
-
-export default defineComponent({
-  mounted() {
-    const json = {
-      chart: {
-        type: 'pie',
-        data: [
-          { x: 'Apples', value: '128.14', fill: 'green' },
-          { x: 'Oranges', value: '128.14', fill: 'orange' },
-        ],
-        container: 'container',
-      },
-    };
-
-    Highcharts.chart(json.chart.container, {
-      chart: {
-        type: json.chart.type,
-      },
-      title: {
-        text: '',
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-          },
-          colors: json.chart.data.map((item) => item.fill),
-        },
-      },
-      series: [
-        {
-          name: 'Percentage',
-          data: json.chart.data.map((item) => ({
-            name: item.x,
-            y: parseFloat(item.value),
-          })),
-        },
-      ],
-    });
-  },
-});
+<script setup lang="ts">
+import AreaChart from '@/pages/apexCharts/AreaChart.vue';
+import BarChart from '@/pages/apexCharts/BarChart.vue';
+import BubbleChart from '@/pages/apexCharts/BubbleChart.vue';
+import LineChart from '@/pages/apexCharts/LineChart.vue';
+import PieChart from '@/pages/apexCharts/PieChart.vue';
+import RadarChart from '@/pages/apexCharts/RadarChart.vue';
 </script>
-
 <style scoped>
-#container {
-  height: 400px;
+.layout {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid:
+    'd1 d2 d3' 1fr
+    'd4 d5 d6' 1fr
+    / 1fr 1fr 1fr;
+  gap: 3px;
+}
+
+.d1 {
+  grid-area: d1;
+}
+.d2 {
+  grid-area: d2;
+}
+.d3 {
+  grid-area: d3;
+}
+.d4 {
+  grid-area: d4;
+}
+.d5 {
+  grid-area: d5;
+}
+.d6 {
+  grid-area: d6;
 }
 </style>

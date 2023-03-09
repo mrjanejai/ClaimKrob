@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <apexchart
-      width="400"
-      height="400"
+  <div class="example">
+    <apexcharts
+      height="350"
+      width="100%"
       type="bar"
       :options="chartOptions"
-      :series="chartSeries"
-    ></apexchart>
+      :series="series"
+    />
   </div>
 </template>
 
@@ -14,27 +14,26 @@
 import VueApexCharts from 'vue3-apexcharts';
 
 export default {
+  name: 'Chart',
   components: {
-    apexchart: VueApexCharts,
+    apexcharts: VueApexCharts,
   },
-  data() {
+  data: function () {
     return {
       chartOptions: {
         chart: {
-          width: 400,
-          height: 400,
-          type: 'bar',
+          id: 'basic-bar',
         },
-        series: [
-          {
-            data: [77, 58, 63, 32, 58, 64, 78],
-          },
-        ],
         xaxis: {
-          categories: ['OPD', 'IPD', 'NCD', 'TMD', 'PSY', 'PHY', 'ISM'],
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
         },
       },
-      chartSeries: [],
+      series: [
+        {
+          name: 'series-1',
+          data: [30, 40, 45, 50, 49, 60, 70, 91],
+        },
+      ],
     };
   },
 };

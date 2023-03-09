@@ -1,8 +1,8 @@
 <template>
   <div>
     <apexchart
-      width="400"
-      height="400"
+      width="100%"
+      height="350"
       type="pie"
       :options="chartOptions"
       :series="chartSeries"
@@ -22,7 +22,7 @@ export default {
       chartOptions: {
         chart: {
           width: 400,
-          height: 400,
+          height: 350,
           type: 'pie',
         },
         series: [],

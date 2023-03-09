@@ -1,78 +1,100 @@
 <template>
   <div>
-    <apexchart
-      width="400"
-      height="400"
-      type="bubble"
+    <ApexCharts
+      ref="chart"
       :options="chartOptions"
-      :series="chartSeries"
-    ></apexchart>
+      :series="series"
+    ></ApexCharts>
   </div>
 </template>
 
 <script lang="ts">
-import VueApexCharts from 'vue3-apexcharts';
+import { defineComponent, ref } from 'vue';
+import ApexCharts from 'vue3-apexcharts';
 
-export default {
+export default defineComponent({
+  name: 'BubbleChart',
   components: {
-    apexchart: VueApexCharts,
+    ApexCharts,
   },
-  data() {
-    return {
-      chartOptions: {
-        chart: {
-          width: 400,
-          height: 400,
-          type: 'bubble',
-        },
-        series: [
-          {
-            name: 'Series 1',
-            data: [
-              {
-                x: 'OPD',
-                y: 77,
-                z: 30,
-              },
-              {
-                x: 'IPD',
-                y: 58,
-                z: 20,
-              },
-              {
-                x: 'NCD',
-                y: 63,
-                z: 15,
-              },
-              {
-                x: 'TMD',
-                y: 32,
-                z: 25,
-              },
-              {
-                x: 'PSY',
-                y: 58,
-                z: 35,
-              },
-              {
-                x: 'PHY',
-                y: 64,
-                z: 10,
-              },
-              {
-                x: 'ISM',
-                y: 78,
-                z: 40,
-              },
-            ],
-          },
-        ],
-        xaxis: {
-          categories: ['OPD', 'IPD', 'NCD', 'TMD', 'PSY', 'PHY', 'ISM'],
+  setup() {
+    const chart = ref(null);
+
+    const series = ref([
+      {
+        name: 'Bubble1',
+        data: generateData(new Date('11 Feb 2017').getTime(), 20, {
+          min: 10,
+          max: 60,
+        }),
+      },
+      {
+        name: 'Bubble2',
+        data: generateData(new Date('11 Feb 2017').getTime(), 20, {
+          min: 10,
+          max: 60,
+        }),
+      },
+      {
+        name: 'Bubble3',
+        data: generateData(new Date('11 Feb 2017').getTime(), 20, {
+          min: 10,
+          max: 60,
+        }),
+      },
+    ]);
+
+    const chartOptions = ref({
+      chart: {
+        height: 350,
+        type: 'bubble',
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      fill: {
+        opacity: 0.8,
+      },
+      title: {
+        text: 'Simple Bubble Chart',
+      },
+      xaxis: {
+        tickAmount: 12,
+        type: 'datetime',
+        labels: {
+          rotate: 0,
         },
       },
-      chartSeries: [],
-    };
+      yaxis: {
+        max: 70,
+      },
+    });
+
+    function generateData(baseval: number, count: number, yrange: any) {
+      let i = 0;
+      const seriesData = [];
+      while (i < count) {
+        const x =
+          Math.floor(Math.random() * (750000000 - 1350000000000 + 1)) +
+          1350000000000;
+        const y =
+          Math.floor(Math.random() * (yrange.max - yrange.min + 1)) +
+          yrange.min;
+        const z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
+
+        seriesData.push([x, y, z]);
+        baseval += 86400000;
+        i++;
+      }
+      return seriesData;
+    }
+
+    return { chart, series, chartOptions };
   },
-};
+  mounted() {
+    // You can access the ApexCharts instance using this.$refs.chart.chart
+    // For example:
+    // this.chart.chart.updateOptions({ title: { text: 'New Chart Title' } })
+  },
+});
 </script>

@@ -1,42 +1,52 @@
 <template>
-  <div>
+  <div id="chart">
     <apexchart
-      width="400"
-      height="400"
+      height="350"
+      width="100%"
       type="radar"
+      ref="chartRef"
       :options="chartOptions"
       :series="chartSeries"
     ></apexchart>
   </div>
 </template>
 
-<script>
-import VueApexCharts from 'vue3-apexcharts';
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import ChartComponent from 'vue3-apexcharts';
 
-export default {
+export default defineComponent({
   components: {
-    apexchart: VueApexCharts,
+    apexchart: ChartComponent,
   },
-  data() {
-    return {
-      chartOptions: {
-        chart: {
-          width: 400,
-          height: 400,
-          type: 'radar',
-        },
-        series: [
-          {
-            name: 'Series 1',
-            data: [77, 58, 63, 32, 58, 64, 78],
-          },
-        ],
-        xaxis: {
-          categories: ['OPD', 'IPD', 'NCD', 'TMD', 'PSY', 'PHY', 'ISM'],
+  setup() {
+    const chartRef = ref<any>(null);
+
+    const chartOptions = {
+      chart: {
+        id: 'chart',
+        type: 'radar',
+        toolbar: {
+          show: true,
         },
       },
-      chartSeries: [],
+      xaxis: {
+        categories: ['January', 'February', 'March', 'April', 'May', 'June'],
+      },
+    };
+
+    const chartSeries = [
+      {
+        name: 'series-1',
+        data: [90, 15, 77, 30, 99, 45],
+      },
+    ];
+
+    return {
+      chartRef,
+      chartOptions,
+      chartSeries,
     };
   },
-};
+});
 </script>

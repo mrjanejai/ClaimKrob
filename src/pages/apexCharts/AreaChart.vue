@@ -1,12 +1,12 @@
 <template>
   <div>
     <apexchart
-      width="400"
-      height="400"
-      type="area"
       :options="chartOptions"
       :series="chartSeries"
-    ></apexchart>
+      type="area"
+      height="350"
+      width="100%"
+    />
   </div>
 </template>
 
@@ -17,25 +17,39 @@ export default {
   components: {
     apexchart: VueApexCharts,
   },
-  data() {
-    return {
-      chartOptions: {
-        chart: {
-          width: 400,
-          height: 400,
-          type: 'area',
-        },
-        series: [
-          {
-            name: 'Series 1',
-            data: [77, 58, 63, 32, 58, 64, 78],
-          },
-        ],
-        xaxis: {
-          categories: ['OPD', 'IPD', 'NCD', 'TMD', 'PSY', 'PHY', 'ISM'],
-        },
+  setup() {
+    const chartOptions = {
+      chart: {
+        id: 'basic-area',
       },
-      chartSeries: [],
+      xaxis: {
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+        ],
+      },
+      tooltip: {
+        theme: 'dark',
+      },
+    };
+
+    const chartSeries = [
+      {
+        name: 'series-1',
+        data: [30, 40, 45, 50, 49, 60, 70, 91, 125],
+      },
+    ];
+
+    return {
+      chartOptions,
+      chartSeries,
     };
   },
 };

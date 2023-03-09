@@ -7,7 +7,12 @@ const routes: RouteRecordRaw[] = [
     meta: { requireAuth: true },
     // beforeEnter: checkAuth,
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
+      { path: '', component: () => import('pages/TestIndexPage.vue') },
+      { path: 'main', component: () => import('@/pages/TestIndexPage.vue') },
+      {
+        path: 'main2',
+        component: () => import('@/pages/chartTypes/AllCharts.vue'),
+      },
       {
         path: 'pie',
         component: () => import('@/pages/apexCharts/PieChart.vue'),
