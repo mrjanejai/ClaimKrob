@@ -11,7 +11,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'main', component: () => import('@/pages/TestIndexPage.vue') },
       {
         path: 'main2',
-        component: () => import('@/pages/chartTypes/AllCharts.vue'),
+        component: () => import('@/pages/ipd/AllFund.vue'),
       },
       {
         path: 'pie',
