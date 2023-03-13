@@ -14,28 +14,8 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/pages/ipd/AllFund.vue'),
       },
       {
-        path: 'pie',
-        component: () => import('@/pages/apexCharts/PieChart.vue'),
-      },
-      {
-        path: 'bar',
-        component: () => import('@/pages/apexCharts/BarChart.vue'),
-      },
-      {
-        path: 'line',
-        component: () => import('@/pages/apexCharts/LineChart.vue'),
-      },
-      {
-        path: 'area',
-        component: () => import('@/pages/apexCharts/AreaChart.vue'),
-      },
-      {
-        path: 'bubble',
-        component: () => import('@/pages/apexCharts/BubbleChart.vue'),
-      },
-      {
-        path: 'radar',
-        component: () => import('@/pages/apexCharts/RadarChart.vue'),
+        path: 'upload',
+        component: () => import('@/pages/opd/UploadPage.vue'),
       },
       { path: 'pinia', component: () => import('@/pages/PiniaPage.vue') },
       { path: 'i18n', component: () => import('@/pages/I18nPage.vue') },

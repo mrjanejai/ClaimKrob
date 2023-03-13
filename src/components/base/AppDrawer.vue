@@ -210,7 +210,7 @@ export default defineComponent({
         { icon: 'bi-house-door', text: 'Home', link: '/' },
         //{ icon: 'bi-card-heading', text: 'Feed', link: '/feed' },
         { icon: 'bi-file-medical', text: 'ผู้ป่วยนอก', link: '/main2' },
-        { icon: 'bi-bandaid', text: 'ผู้ป่วยใน', link: '/i18n' },
+        { icon: 'bi-bandaid', text: 'ผู้ป่วยใน', link: '/upload' },
         /*{
           icon: 'bi-file-arrow-down',
           text: 'Fetch data',

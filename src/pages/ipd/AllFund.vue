@@ -16,6 +16,22 @@
           Export
         </q-btn>
       </template>
+      <template #body-cell-actions="props">
+        <q-td :props="props">
+          <q-btn
+            v-if="props.col.field === 'actions'"
+            color="primary"
+            icon="bi-eye-fill"
+            @click="viewItem(props.row.id)"
+          />
+          <q-btn
+            v-if="props.col.field === 'actions'"
+            color="primary"
+            icon="bi-pencil-fill"
+            @click="editItem(props.row.id)"
+          />
+        </q-td>
+      </template>
     </q-table>
   </q-page>
 </template>
@@ -23,10 +39,18 @@
 <script lang="ts">
 import { ref } from 'vue';
 import * as XLSX from 'xlsx';
+import { useRouter } from 'vue-router';
+
+interface DataItem {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+}
 
 export default {
   setup() {
-    const data = ref([
+    const data = ref<DataItem[]>([
       { id: 1, name: 'John Doe', email: 'johndoe@example.com', age: 30 },
       { id: 2, name: 'Jane Doe', email: 'janedoe@example.com', age: 25 },
       { id: 3, name: 'Bob Smith', email: 'bobsmith@example.com', age: 45 },
@@ -71,10 +95,34 @@ export default {
         field: 'age',
         sortable: true,
       },
+      {
+        name: 'actions',
+        required: true,
+        label: 'Actions',
+        align: 'center',
+        field: 'actions',
+        sortable: false,
+        format: (value: DataItem, row: DataItem) => {
+          return `
+            <q-btn dense color="primary" icon="visibility" @click="viewItem(${row.id})" />
+            <q-btn dense color="warning" icon="edit" @click="editItem(${row.id})" />
+          `;
+        },
+      },
     ];
 
     const filter = ref('');
     const loading = ref(false);
+
+    const router = useRouter();
+
+    const viewItem = (id: number) => {
+      router.push(`/view/${id}`);
+    };
+
+    const editItem = (id: number) => {
+      router.push(`/edit/${id}`);
+    };
 
     const exportTable = () => {
       loading.value = true;
@@ -96,6 +144,8 @@ export default {
       columns,
       filter,
       loading,
+      viewItem,
+      editItem,
       exportTable,
     };
   },
