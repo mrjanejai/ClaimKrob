@@ -15,7 +15,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'upload',
-        component: () => import('@/pages/opd/UploadPage.vue'),
+        component: () => import('@/pages/opd/UploadApi.vue'),
       },
       { path: 'pinia', component: () => import('@/pages/PiniaPage.vue') },
       { path: 'i18n', component: () => import('@/pages/I18nPage.vue') },
