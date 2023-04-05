@@ -7,41 +7,101 @@
           color="primary"
           :accept="'.xlsx'"
           :auto-upload="false"
-          :hide-upload-btn="file !== null"
+          :hide-upload-btn="true"
           @added="file = $event[0]"
         >
-          <template #file>
-            <div class="text-body2">
-              {{ file?.name }}
-              <q-btn dense flat round icon="close" @click="file = null" />
+          <template v-slot:header="scope">
+            <div class="row no-wrap items-center q-pa-sm q-gutter-xs">
+              <q-btn
+                v-if="scope.queuedFiles.length > 0"
+                icon="bi-x-circle-fill"
+                @click="scope.removeQueuedFiles"
+                round
+                dense
+                flat
+              >
+                <q-tooltip>Clear All</q-tooltip>
+              </q-btn>
+              <q-btn
+                v-if="scope.uploadedFiles.length > 0"
+                icon="bi-check-circle-fill"
+                @click="scope.removeUploadedFiles"
+                round
+                dense
+                flat
+              >
+                <q-tooltip>Remove Uploaded Files</q-tooltip>
+              </q-btn>
+              <q-spinner
+                v-if="scope.isUploading"
+                class="q-uploader__spinner"
+              ></q-spinner>
+              <div class="col">
+                <div class="q-uploader__title">Upload your files</div>
+                <div class="q-uploader__subtitle">
+                  {{ scope.uploadSizeLabel }} / {{ scope.uploadProgressLabel }}
+                </div>
+              </div>
+              <q-btn
+                v-if="scope.canAddFiles"
+                type="a"
+                icon="bi-calendar2-plus-fill"
+                @click="scope.pickFiles"
+                round
+                dense
+                flat
+              >
+                <q-uploader-add-trigger></q-uploader-add-trigger>
+                <q-tooltip>Pick Files</q-tooltip>
+              </q-btn>
+              <q-btn
+                v-if="scope.canUpload"
+                icon="bi-cloud-arrow-up-fill"
+                :disable="!file"
+                @click="uploadFile"
+                :loading="loading"
+                round
+                dense
+                flat
+              >
+                <q-tooltip>Upload Files</q-tooltip>
+              </q-btn>
+
+              <q-btn
+                v-if="scope.isUploading"
+                icon="bi-trash"
+                @click="scope.abort"
+                round
+                dense
+                flat
+              >
+                <q-tooltip>Abort Upload</q-tooltip>
+              </q-btn>
             </div>
-          </template>
-          <template #list>
-            <q-btn
-              color="primary"
-              :disable="!file"
-              @click="uploadFile"
-              :loading="loading"
-            >
-              Upload
-            </q-btn>
           </template>
         </q-uploader>
         <q-table
           :rows="data"
           :columns="columns"
           :loading="loading"
-          :visible-columns="['id', 'name', 'email', 'age']"
-        />
+          :visible-columns="['id', 'name', 'email', 'age', 'actions']"
+        >
+          <template v-slot:body-cell-actions="{ row }">
+            <q-btn dense flat round icon="bi-eye" @click="viewRow(row)" />
+            <q-btn dense flat round icon="bi-pencil" @click="editRow(row)" />
+            <q-btn dense flat round icon="bi-x" @click="deleteRow(row)" />
+          </template>
+        </q-table>
       </q-card-section>
     </q-card>
   </q-page>
 </template>
 
-<script lang="ts">
+<!-- Keep the rest of your code as it is -->
+
+<script lang="ts" setup>
 import { ref } from 'vue';
 import * as XLSX from 'xlsx';
-import axios from 'axios';
 
 interface DataItem {
   id: number;
@@ -85,6 +145,14 @@ const columns: any[] = [
     field: 'age',
     sortable: true,
   },
+  {
+    name: 'actions',
+    required: true,
+    label: 'Actions',
+    align: 'left',
+    field: 'actions',
+    sortable: true,
+  },
 ];
 const loading = ref(false);
 
@@ -96,73 +164,44 @@ const parseFile = (file: File) => {
       const workbook = XLSX.read(data, { type: 'binary' });
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const sheetData = XLSX.utils.sheet_to_json(worksheet);
-      updateData(sheetData);
+      updateData(sheetData); // Call updateData inside reader.onload
     }
+  };
+  reader.onerror = () => {
+    console.error('Error reading file:', reader.error);
+    reader.abort();
   };
   reader.readAsBinaryString(file);
 };
 
 const updateData = (sheetData: any[]) => {
   data.value = sheetData.map((item) => ({
-    id: item['ID'],
-    name: item['Name'],
-    email: item['Email'],
-    age: item['Age'],
+    id: item['id'],
+    name: item['name'],
+    email: item['email'],
+    age: item['age'],
   }));
 };
 
-const uploadFile = async () => {
+const uploadFile = () => {
   if (file.value) {
     loading.value = true;
-    parseFile(file.value);
-
-    const formData = new FormData();
-    formData.append('file', file.value);
-
-    try {
-      const response = await axios.post('/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      updateData(response.data);
-      file.value = null;
-    } catch (error) {
-      console.error(error);
-    }
-
+    parseFile(file.value); // This should update the data.value inside reader.onload
     loading.value = false;
   }
 };
 
-const getData = async () => {
-  loading.value = true;
-  try {
-    const response = await axios.get('/api/data');
-    data.value = response.data;
-  } catch (error) {
-    console.error(error);
-  }
-  loading.value = false;
+const deleteRow = (row: DataItem) => {
+  data.value = data.value.filter((item) => item.id !== row.id);
+};
+const viewRow = (row: DataItem) => {
+  console.log('View row:', row);
+  // Implement the logic for viewing the row
 };
 
-getData();
-
-export default {
-  setup() {
-    const fetch = async () => {
-      await getData();
-    };
-    fetch();
-
-    return {
-      file,
-      data,
-      columns,
-      loading,
-      uploadFile,
-    };
-  },
+const editRow = (row: DataItem) => {
+  console.log('Edit row:', row);
+  // Implement the logic for editing the row
 };
 </script>
 

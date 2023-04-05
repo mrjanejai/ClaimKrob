@@ -16,6 +16,15 @@
           Export
         </q-btn>
       </template>
+      <template #top-left>
+        <q-btn
+          @click="exportTable"
+          color="primary"
+          icon="bi-file-earmark-excel-fill"
+        >
+          create
+        </q-btn>
+      </template>
       <template #body-cell-actions="props">
         <q-td :props="props">
           <q-btn
