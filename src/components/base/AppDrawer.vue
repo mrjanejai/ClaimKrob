@@ -93,8 +93,10 @@
           </q-list>
         </q-expansion-item>-->
 
-        <q-separator class="q-my-md" />
-
+        <!-- <q-separator class="q-my-md" />
+        <q-item-label header class="text-weight-bold text-uppercase"
+          >E-Claim
+        </q-item-label>
         <q-item v-for="link in links2" :key="link.text" v-ripple clickable>
           <q-item-section avatar>
             <q-icon
@@ -105,14 +107,74 @@
           <q-item-section>
             <q-item-label>{{ link.text }}</q-item-label>
           </q-item-section>
-        </q-item>
-
-        <!--<q-separator class="q-mt-md q-mb-xs" />
-
+        </q-item> -->
+        <div class="q-mt-md q-mb-xs">
+          <q-list class="rounded-borders">
+            <q-expansion-item
+              expand-separator
+              label="e-claim"
+              class="text-weight-bold text-uppercase"
+              icon="bi-currency-exchange"
+            >
+              <q-card>
+                <q-card-section>
+                  <q-item
+                    v-for="link in links2"
+                    :key="link.text"
+                    v-ripple
+                    clickable
+                  >
+                    <q-item-section avatar>
+                      <q-icon
+                        :color="$q.dark.isActive ? 'white' : 'black'"
+                        :name="link.icon"
+                      />
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </q-list>
+        </div>
+        <!--  -->
+        <div class="q-mt-md q-mb-xs">
+          <q-list class="rounded-borders">
+            <q-expansion-item
+              expand-separator
+              label="Seamless"
+              class="text-weight-bold text-uppercase"
+              icon="bi-currency-exchange"
+            >
+              <q-card>
+                <q-card-section>
+                  <q-item
+                    v-for="link in links3"
+                    :key="link.text"
+                    v-ripple
+                    clickable
+                  >
+                    <q-item-section avatar>
+                      <q-icon
+                        :color="$q.dark.isActive ? 'white' : 'black'"
+                        :name="link.icon"
+                      />
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </q-list>
+        </div>
+        <!-- <q-separator class="q-mt-md q-mb-xs" />
         <q-item-label header class="text-weight-bold text-uppercase">
-          More from Youtube
+          Seamless
         </q-item-label>
-
         <q-item v-for="link in links3" :key="link.text" v-ripple clickable>
           <q-item-section avatar>
             <q-icon
@@ -123,7 +185,7 @@
           <q-item-section>
             <q-item-label>{{ link.text }}</q-item-label>
           </q-item-section>
-        </q-item>-->
+        </q-item> -->
 
         <q-separator class="q-my-md" />
 
@@ -211,23 +273,22 @@ export default defineComponent({
         //{ icon: 'bi-card-heading', text: 'Feed', link: '/feed' },
         { icon: 'bi-file-medical', text: 'ผู้ป่วยนอก', link: '/main2' },
         { icon: 'bi-bandaid', text: 'ผู้ป่วยใน', link: '/upload' },
-        /*{
-          icon: 'bi-file-arrow-down',
-          text: 'Fetch data',
-          link: '/fetch-data',
-        },
-        { icon: 'bi-file', text: 'Tutor1', link: '/tutor1' },*/
+        // {
+        //   icon: 'bi-file-arrow-down',
+        //   text: 'Fetch data',
+        //   link: '/fetch-data',
+        // },
+        // { icon: 'bi-file', text: 'Tutor1', link: '/tutor1' },
       ],
       links2: [
-        { icon: 'bi-gear', text: 'ตั้งค่ากองทุน' },
         { icon: 'bi-file-spreadsheet', text: 'REP' },
         { icon: 'bi-file-spreadsheet', text: 'STM' },
         { icon: 'bi-cash-coin', text: 'เงินโอน' },
       ],
       links3: [
-        { icon: 'bi-play-btn', text: 'Movies & Shows' },
-        { icon: 'bi-cast', text: 'Gaming' },
-        { icon: 'bi-tv', text: 'Live' },
+        { icon: 'bi-file-spreadsheet', text: 'REP' },
+        { icon: 'bi-file-spreadsheet', text: 'STM' },
+        { icon: 'bi-cash-coin', text: 'เงินโอน' },
       ],
       links4: [
         { icon: 'bi-gear', text: 'Settings' },
