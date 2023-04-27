@@ -40,7 +40,7 @@
           class="text-weight-bold text-uppercase"
           :class="$q.dark.isActive ? 'text-white' : 'text-black'"
         >
-          Vue Social
+          Claim Krob
         </q-toolbar-title>
       </q-btn>
 

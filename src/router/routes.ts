@@ -10,16 +10,52 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/TestIndexPage.vue') },
       { path: 'main', component: () => import('@/pages/TestIndexPage.vue') },
       {
-        path: 'main2',
-        component: () => import('@/pages/ipd/AllFund.vue'),
+        path: 'ipd',
+        component: () => import('@/pages/ipd/SyncIPD.vue'),
       },
       {
-        path: 'upload',
-        component: () => import('@/pages/opd/UploadApi.vue'),
+        path: 'opd',
+        component: () => import('@/pages/opd/SyncOPD.vue'),
       },
       {
-        path: 'test',
+        path: 'echeck',
+        component: () => import('@/pages/funds/ECheck.vue'),
+      },
+      {
+        path: 'erep',
+        component: () => import('@/pages/funds/ERepUpload.vue'),
+      },
+      {
+        path: 'estm',
+        component: () => import('@/pages/funds/EStmUpload.vue'),
+      },
+      {
+        path: 'emoney',
         component: () => import('@/pages/IndexPage.vue'),
+      },
+      {
+        path: 'scheck',
+        component: () => import('@/pages/funds/SCheck.vue'),
+      },
+      {
+        path: 'srep',
+        component: () => import('@/pages/funds/SRepUpload.vue'),
+      },
+      {
+        path: 'sstm',
+        component: () => import('@/pages/funds/SStmUpload.vue'),
+      },
+      {
+        path: 'smoney',
+        component: () => import('@/pages/IndexPage.vue'),
+      },
+      {
+        path: 'stmain',
+        component: () => import('@/pages/settings/SyncMaster.vue'),
+      },
+      {
+        path: 'stfund',
+        component: () => import('@/pages/settings/SetFunds.vue'),
       },
       { path: 'pinia', component: () => import('@/pages/PiniaPage.vue') },
       { path: 'i18n', component: () => import('@/pages/I18nPage.vue') },

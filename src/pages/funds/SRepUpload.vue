@@ -1,40 +1,47 @@
 <template>
   <q-page>
-    <q-card class="q-pa-md">
-      <q-card-section>
-        <q-uploader
-          class="q-mb-md"
-          color="primary"
-          accept=".xlsx"
-          :auto-upload="true"
-          :hide-upload-btn="file !== null"
-          @added="file = $event[0]"
+    <div class="q-pa-md row items-start q-gutter-md">
+      <q-card class="my-card bg-secondary text-white">
+        <q-card-section>
+          <div class="text-h6">นำเข้า REP Seamless</div>
+        </q-card-section>
+        <q-card-section>
+          <q-uploader
+            class="q-mb-md"
+            color="primary"
+            accept=".xlsx"
+            :auto-upload="true"
+            :hide-upload-btn="file !== null"
+            @added="file = $event[0]"
+          >
+            <template>
+              <div class="text-body2">
+                {{ file?.name }}
+                <q-btn dense flat round icon="close" @click="file = null" />
+              </div>
+            </template>
+            <template #list>
+              <q-btn
+                color="primary"
+                :disabled="!file"
+                @click="uploadFile"
+                :loading="loading"
+              >
+                Upload
+              </q-btn>
+            </template>
+          </q-uploader></q-card-section
         >
-          <template #file>
-            <div class="text-body2">
-              {{ file?.name }}
-              <q-btn dense flat round icon="close" @click="file = null" />
-            </div>
-          </template>
-          <template #list>
-            <q-btn
-              color="primary"
-              :disabled="!file"
-              @click="uploadFile"
-              :loading="loading"
-            >
-              Upload
-            </q-btn>
-          </template>
-        </q-uploader>
-        <q-table
-          :rows="data"
-          :columns="columns"
-          :loading="loading"
-          :visible-columns="['id', 'name', 'email', 'age']"
-        />
-      </q-card-section>
-    </q-card>
+      </q-card>
+    </div>
+    <div class="q-pa-md">
+      <q-table
+        :rows="data"
+        :columns="columns"
+        :loading="loading"
+        :visible-columns="['id', 'name', 'email', 'age']"
+      />
+    </div>
   </q-page>
 </template>
 

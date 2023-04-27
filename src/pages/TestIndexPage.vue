@@ -1,11 +1,11 @@
 <template>
   <section class="layout">
-    <div class="d1">กองทุน 1<br /><AreaChart /></div>
-    <div class="d2">กองทุน 2<br /><BarChart /></div>
-    <div class="d3">กองทุน 3<br /><BubbleChart /></div>
-    <div class="d4">กองทุน 4<br /><LineChart /></div>
-    <div class="d5">กองทุน 5<br /><PieChart /></div>
-    <div class="d6">กองทุน 6<br /><RadarChart /></div>
+    <div class="d1">&nbsp;กองทุน 1<br /><AreaChart /></div>
+    <div class="d2">&nbsp;กองทุน 2<br /><BarChart /></div>
+    <div class="d3">&nbsp;กองทุน 3<br /><BubbleChart /></div>
+    <div class="d4">&nbsp;กองทุน 4<br /><LineChart /></div>
+    <div class="d5">&nbsp;กองทุน 5<br /><PieChart /></div>
+    <div class="d6">&nbsp;กองทุน 6<br /><RadarChart /></div>
   </section>
 </template>
 
@@ -18,7 +18,7 @@ import PieChart from '@/pages/apexCharts/PieChart.vue';
 import RadarChart from '@/pages/apexCharts/RadarChart.vue';
 import { useMeta } from 'quasar';
 useMeta({
-  title: 'Claim Krob Page',
+  title: '---Claim Krob---',
   meta: {
     description: { name: 'description', content: 'Claim Krob Page' },
     keywords: { name: 'keywords', content: 'Quasar website' },
@@ -31,7 +31,7 @@ useMeta({
       property: 'og:title',
       // optional; similar to titleTemplate, but allows templating with other meta properties
       template() {
-        return 'Claim Krob Page';
+        return '---Claim Krob---';
       },
     },
   },

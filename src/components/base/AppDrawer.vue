@@ -121,6 +121,7 @@
                   <q-item
                     v-for="link in links2"
                     :key="link.text"
+                    :to="link.link"
                     v-ripple
                     clickable
                   >
@@ -153,6 +154,7 @@
                   <q-item
                     v-for="link in links3"
                     :key="link.text"
+                    :to="link.link"
                     v-ripple
                     clickable
                   >
@@ -188,8 +190,46 @@
         </q-item> -->
 
         <q-separator class="q-my-md" />
+        <div class="q-mt-md q-mb-xs">
+          <q-list class="rounded-borders">
+            <q-expansion-item
+              expand-separator
+              label="settings"
+              class="text-weight-bold text-uppercase"
+              icon="bi-gear"
+            >
+              <q-card>
+                <q-card-section>
+                  <q-item
+                    v-for="link in links4"
+                    :key="link.text"
+                    :to="link.link"
+                    v-ripple
+                    clickable
+                  >
+                    <q-item-section avatar>
+                      <q-icon
+                        :color="$q.dark.isActive ? 'white' : 'black'"
+                        :name="link.icon"
+                      />
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </q-list>
+        </div>
 
-        <q-item v-for="link in links4" :key="link.text" v-ripple clickable>
+        <!-- <q-item
+          v-for="link in links4"
+          :key="link.text"
+          :to="link.link"
+          v-ripple
+          clickable
+        >
           <q-item-section avatar>
             <q-icon
               :color="$q.dark.isActive ? 'white' : 'black'"
@@ -199,7 +239,7 @@
           <q-item-section>
             <q-item-label>{{ link.text }}</q-item-label>
           </q-item-section>
-        </q-item>
+        </q-item> -->
 
         <q-separator class="q-mt-md q-mb-lg" />
 
@@ -271,8 +311,8 @@ export default defineComponent({
       links1: [
         { icon: 'bi-house-door', text: 'Home', link: '/' },
         //{ icon: 'bi-card-heading', text: 'Feed', link: '/feed' },
-        { icon: 'bi-file-medical', text: 'ผู้ป่วยนอก', link: '/main2' },
-        { icon: 'bi-bandaid', text: 'ผู้ป่วยใน', link: '/upload' },
+        { icon: 'bi-file-medical', text: 'นำเข้าผู้ป่วยนอก', link: '/opd' },
+        { icon: 'bi-bandaid', text: 'นำเข้าผู้ป่วยใน', link: '/ipd' },
         // {
         //   icon: 'bi-file-arrow-down',
         //   text: 'Fetch data',
@@ -281,20 +321,26 @@ export default defineComponent({
         // { icon: 'bi-file', text: 'Tutor1', link: '/tutor1' },
       ],
       links2: [
-        { icon: 'bi-file-spreadsheet', text: 'REP' },
-        { icon: 'bi-file-spreadsheet', text: 'STM' },
-        { icon: 'bi-cash-coin', text: 'เงินโอน' },
+        { icon: 'bi-check2-circle', text: 'ตรวจสอบกองทุน', link: '/echeck' },
+        { icon: 'bi-file-spreadsheet', text: 'REP', link: '/erep' },
+        { icon: 'bi-file-spreadsheet', text: 'STM', link: '/estm' },
+        { icon: 'bi-cash-coin', text: 'เงินโอน', link: '/emoney' },
       ],
       links3: [
-        { icon: 'bi-file-spreadsheet', text: 'REP' },
-        { icon: 'bi-file-spreadsheet', text: 'STM' },
-        { icon: 'bi-cash-coin', text: 'เงินโอน' },
+        { icon: 'bi-check2-circle', text: 'ตรวจสอบกองทุน', link: '/scheck' },
+        { icon: 'bi-file-spreadsheet', text: 'REP', link: '/srep' },
+        { icon: 'bi-file-spreadsheet', text: 'STM', link: '/sstm' },
+        { icon: 'bi-cash-coin', text: 'เงินโอน', link: '/smoney' },
       ],
       links4: [
-        { icon: 'bi-gear', text: 'Settings' },
-        { icon: 'bi-flag', text: 'Report history' },
-        { icon: 'bi-question-circle', text: 'Help' },
-        { icon: 'bi-info-square', text: 'Send feedback' },
+        {
+          icon: 'bi-arrow-clockwise',
+          text: 'นำเข้าข้อมูลหลัก',
+          link: '/stmain',
+        },
+        { icon: 'bi-flag', text: 'ตั้งค่ากองทุน', link: '/stfund' },
+        // { icon: 'bi-question-circle', text: 'Help' },
+        // { icon: 'bi-info-square', text: 'Send feedback' },
       ],
       buttons1: [
         { text: 'About' },
