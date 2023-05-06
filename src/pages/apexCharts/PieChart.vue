@@ -26,7 +26,7 @@ export default {
           type: 'pie',
         },
         series: [],
-        labels: ['OPD', 'IPD', 'NCD', 'TMD', 'PSY', 'PHY', 'ISM'],
+        labels: ['ได้เงินแล้ว', 'ยังไม่ได้เงิน'],
         responsive: [
           {
             breakpoint: 480,
@@ -41,7 +41,7 @@ export default {
           },
         ],
       },
-      chartSeries: [77, 58, 63, 32, 58, 64, 78],
+      chartSeries: [63, 37],
     };
   },
 };

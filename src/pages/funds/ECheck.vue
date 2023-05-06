@@ -1,150 +1,185 @@
 <template>
   <q-page>
-    <div class="q-pa-md row items-start q-gutter-md">
-      <q-card class="my-card bg-secondary text-white">
-        <q-card-section>
-          <div class="text-h6">ตรวจสอบกองทุน E-Claim</div>
-        </q-card-section>
+    <section class="layout">
+      <div class="d1">
+        <q-card class="my-card bg-teal-8 text-white">
+          <q-card-section>
+            <div class="text-h6">ตรวจสอบกองทุน E-Claim</div>
+          </q-card-section>
 
-        <!-- <q-card-section> test </q-card-section> -->
+          <!-- <q-card-section> test </q-card-section> -->
 
-        <q-separator dark />
-        &nbsp;
-        <q-card-actions>
-          <q-btn-dropdown color="primary" label="กองทุน">
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>กองทุน1</q-item-label>
-                </q-item-section>
-              </q-item>
+          <q-separator dark />
+          &nbsp;
+          <q-card-actions>
+            <section class="layout3">
+              <div class="f1">
+                <q-btn-dropdown color="primary" label="กองทุน">
+                  <q-list>
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section>
+                        <q-item-label>กองทุน1</q-item-label>
+                      </q-item-section>
+                    </q-item>
 
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>กองทุน2</q-item-label>
-                </q-item-section>
-              </q-item>
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section>
+                        <q-item-label>กองทุน2</q-item-label>
+                      </q-item-section>
+                    </q-item>
 
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>กองทุน3</q-item-label>
-                </q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>กองทุน4</q-item-label>
-                </q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>กองทุน5</q-item-label>
-                </q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>กองทุน6</q-item-label>
-                </q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>กองทุน7</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
-          &nbsp;
-          <q-input filled v-model="startDate" label="start" mask="##-##-####">
-            <template #append>
-              <q-icon name="bi-calendar-date-fill" />
-              <q-popup-proxy>
-                <q-date v-model="startDate" mask="DD-MM-YYYY" />
-              </q-popup-proxy>
-            </template>
-          </q-input>
-          &nbsp;
-          <q-input filled v-model="endDate" label="end" mask="##-##-####">
-            <template #append>
-              <q-icon name="bi-calendar-date-fill" />
-              <q-popup-proxy>
-                <q-date v-model="endDate" mask="DD-MM-YYYY" />
-              </q-popup-proxy>
-            </template>
-          </q-input>
-          &nbsp;
-          <q-input filled v-model="findAll" label="ค้นหา">
-            <template #prepend>
-              <q-icon name="bi-search" />
-            </template>
-          </q-input>
-          &nbsp;
-          <!-- <q-btn @click="exportTable" color="primary" icon="bi-arrow-repeat">
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section>
+                        <q-item-label>กองทุน3</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section>
+                        <q-item-label>กองทุน4</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section>
+                        <q-item-label>กองทุน5</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section>
+                        <q-item-label>กองทุน6</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section>
+                        <q-item-label>กองทุน7</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-btn-dropdown>
+              </div>
+              &nbsp;
+              <div class="f2">
+                <q-input
+                  filled
+                  v-model="startDate"
+                  label="start"
+                  mask="##-##-####"
+                >
+                  <template #append>
+                    <q-icon name="bi-calendar-date-fill" />
+                    <q-popup-proxy>
+                      <q-date v-model="startDate" mask="DD-MM-YYYY" />
+                    </q-popup-proxy>
+                  </template>
+                </q-input>
+                &nbsp;
+                <q-input filled v-model="endDate" label="end" mask="##-##-####">
+                  <template #append>
+                    <q-icon name="bi-calendar-date-fill" />
+                    <q-popup-proxy>
+                      <q-date v-model="endDate" mask="DD-MM-YYYY" />
+                    </q-popup-proxy>
+                  </template>
+                </q-input>
+              </div>
+              &nbsp;
+              <div class="f3">
+                &nbsp;
+                <q-input filled v-model="findAll" label="ค้นหา">
+                  <template #prepend>
+                    <q-icon name="bi-search" />
+                  </template>
+                </q-input>
+                &nbsp;
+              </div>
+              &nbsp;
+              <!-- <q-btn @click="exportTable" color="primary" icon="bi-arrow-repeat">
             Sync
           </q-btn> -->
-          <q-btn @click="exportTable" color="primary" icon="bi-search">
-            ค้นหา
-          </q-btn>
-          <q-btn
-            @click="exportTable"
-            color="primary"
-            icon="bi-file-earmark-excel-fill"
-          >
-            Export
-          </q-btn>
-        </q-card-actions>
-      </q-card>
-    </div>
-    <div class="q-pa-md">
-      <q-table
-        :rows="filteredRows"
-        :columns="columns"
-        :xfilter="xfilter"
-        :filter="filter"
-        :loading="loading"
-        row-key="id"
-      >
-        <!-- <template #header="props">
-          <q-tr>
-            <q-th v-for="col in props.cols" :key="col.name" :props="props">
-              {{ col.label }}
-              <div v-if="col.field !== 'actions'">
-                <q-input
-                  dense
-                  debounce="300"
-                  v-model="xfilter[col.field]"
-                  placeholder="Search"
-                />
+              <div class="f4">
+                <q-btn @click="exportTable" color="primary" icon="bi-search">
+                  ค้นหา
+                </q-btn>
+                &nbsp;
+                <q-btn
+                  @click="exportTable"
+                  color="primary"
+                  icon="bi-file-earmark-excel-fill"
+                >
+                  Export
+                </q-btn>
               </div>
-            </q-th>
-          </q-tr>
-        </template> -->
-        <template #body-cell-actions="props">
-          <q-td :props="props">
-            <q-btn
-              v-if="props.col.field === 'actions'"
-              color="red"
-              icon="bi-card-list"
-              label="REP"
-              @click="carousel = true"
-            />&nbsp;
-            <q-btn
-              v-if="props.col.field === 'actions'"
-              color="yellow"
-              icon="bi-card-list"
-              label="STM"
-              @click="editItem(props.row.id)"
-            />&nbsp;
-            <q-btn
-              v-if="props.col.field === 'actions'"
-              color="green"
-              icon="bi-piggy-bank"
-              label="เงินโอน"
-              @click="syncItem(props.row.id)"
-            />
-          </q-td>
-        </template>
-      </q-table>
-    </div>
+            </section>
+          </q-card-actions>
+        </q-card>
+      </div>
+      <div class="d2">
+        <q-card class="my-card bg-green-8 text-white">
+          <q-card-section>
+            <div class="text-h6">ภาพรวมกองทุน</div>
+          </q-card-section>
+          <q-separator dark />
+          <q-card-section>
+            <section class="layout2">
+              <div class="g1">กองทุน 3<br /><RadarChart /></div>
+            </section>
+          </q-card-section>
+        </q-card>
+      </div>
+      <div class="d3">
+        <q-table
+          :rows="filteredRows"
+          :columns="columns"
+          :xfilter="xfilter"
+          :filter="filter"
+          :loading="loading"
+          v-model:pagination="pagination"
+          row-key="id"
+        >
+          <template #header="props">
+            <q-tr>
+              <q-th v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.label }}
+                <div v-if="col.field !== 'actions'">
+                  <q-input
+                    dense
+                    debounce="300"
+                    v-model="xfilter[col.field]"
+                    placeholder="Search"
+                  />
+                </div>
+              </q-th>
+            </q-tr>
+          </template>
+          <template #body-cell-actions="props">
+            <q-td :props="props">
+              <q-btn
+                v-if="props.col.field === 'actions'"
+                color="red"
+                icon="bi-card-list"
+                label="REP"
+                @click="carousel = true"
+              />&nbsp;
+              <q-btn
+                v-if="props.col.field === 'actions'"
+                color="yellow"
+                icon="bi-card-list"
+                label="STM"
+                @click="editItem(props.row.id)"
+              />&nbsp;
+              <q-btn
+                v-if="props.col.field === 'actions'"
+                color="green"
+                icon="bi-piggy-bank"
+                label="เงินโอน"
+                @click="syncItem(props.row.id)"
+              />
+            </q-td>
+          </template>
+        </q-table>
+      </div>
+    </section>
   </q-page>
+
   <q-dialog v-model="carousel" :full-height="true" :full-width="true">
     <q-card>
       <q-card-section class="row items-center q-pb-none">
@@ -236,6 +271,7 @@
 import { ref, computed } from 'vue';
 import * as XLSX from 'xlsx';
 import { useRouter } from 'vue-router';
+import RadarChart from '@/pages/apexCharts/RadarChart.vue';
 
 interface DataItem {
   id: number;
@@ -250,6 +286,9 @@ interface DataItem {
 }
 
 export default {
+  components: {
+    RadarChart,
+  },
   setup() {
     const startDate = ref('');
     const endDate = ref('');
@@ -287,6 +326,76 @@ export default {
       },
       {
         id: 4,
+        vn: '660417183657',
+        an: '660000001',
+        hn: '4444444',
+        name: 'Alice Johnson',
+        idcard: '4444444444444',
+        age: 28,
+        visit: '2022-01-01',
+      },
+      {
+        id: 5,
+        vn: '660417183657',
+        an: '660000001',
+        hn: '4444444',
+        name: 'Alice Johnson',
+        idcard: '4444444444444',
+        age: 28,
+        visit: '2022-01-01',
+      },
+      {
+        id: 6,
+        vn: '660417183657',
+        an: '660000001',
+        hn: '4444444',
+        name: 'Alice Johnson',
+        idcard: '4444444444444',
+        age: 28,
+        visit: '2022-01-01',
+      },
+      {
+        id: 7,
+        vn: '660417183657',
+        an: '660000001',
+        hn: '4444444',
+        name: 'Alice Johnson',
+        idcard: '4444444444444',
+        age: 28,
+        visit: '2022-01-01',
+      },
+      {
+        id: 8,
+        vn: '660417183657',
+        an: '660000001',
+        hn: '4444444',
+        name: 'Alice Johnson',
+        idcard: '4444444444444',
+        age: 28,
+        visit: '2022-01-01',
+      },
+      {
+        id: 9,
+        vn: '660417183657',
+        an: '660000001',
+        hn: '4444444',
+        name: 'Alice Johnson',
+        idcard: '4444444444444',
+        age: 28,
+        visit: '2022-01-01',
+      },
+      {
+        id: 10,
+        vn: '660417183657',
+        an: '660000001',
+        hn: '4444444',
+        name: 'Alice Johnson',
+        idcard: '4444444444444',
+        age: 28,
+        visit: '2022-01-01',
+      },
+      {
+        id: 11,
         vn: '660417183657',
         an: '660000001',
         hn: '4444444',
@@ -461,8 +570,74 @@ export default {
       onItemClick() {
         //
       },
+      pagination: {
+        rowsPerPage: 10, // current rows per page being displayed
+      },
       filteredRows,
     };
   },
 };
 </script>
+<style scoped>
+.layout {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid:
+    'd1 d2' 1fr
+    'd3 d3' 1fr
+    'd3 d3' 1fr
+    'd3 d3' 1fr
+    / 1fr 1fr;
+  gap: 5px;
+}
+.layout2 {
+  width: 100%;
+  height: 400px;
+
+  display: grid;
+  grid:
+    'g1' 1fr
+    / 1fr;
+  gap: 1px;
+}
+
+.layout3 {
+  width: 100%;
+  height: 400px;
+
+  display: grid;
+  grid:
+    'f1' 1fr
+    'f2' 1fr
+    'f3' 1fr
+    'f4' 1fr
+    / 1fr;
+  gap: 1px;
+}
+.d1 {
+  grid-area: d1;
+}
+.d2 {
+  grid-area: d2;
+}
+.d3 {
+  grid-area: d3;
+}
+.g1 {
+  grid-area: g1;
+}
+.f1 {
+  grid-area: f1;
+}
+.f2 {
+  grid-area: f2;
+}
+.f3 {
+  grid-area: f3;
+}
+.f4 {
+  grid-area: f4;
+}
+</style>

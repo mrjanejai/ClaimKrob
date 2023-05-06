@@ -66,7 +66,7 @@ export default defineComponent({
         },
       },
       yaxis: {
-        max: 70,
+        max: 100,
       },
     });
 

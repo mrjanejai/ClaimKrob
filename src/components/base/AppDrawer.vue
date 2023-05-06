@@ -322,12 +322,14 @@ export default defineComponent({
       ],
       links2: [
         { icon: 'bi-check2-circle', text: 'ตรวจสอบกองทุน', link: '/echeck' },
+        { icon: 'bi-file-spreadsheet', text: 'สถานะการเคลม', link: '/erep' },
         { icon: 'bi-file-spreadsheet', text: 'REP', link: '/erep' },
         { icon: 'bi-file-spreadsheet', text: 'STM', link: '/estm' },
         { icon: 'bi-cash-coin', text: 'เงินโอน', link: '/emoney' },
       ],
       links3: [
         { icon: 'bi-check2-circle', text: 'ตรวจสอบกองทุน', link: '/scheck' },
+        { icon: 'bi-file-spreadsheet', text: 'สถานะการเคลม', link: '/erep' },
         { icon: 'bi-file-spreadsheet', text: 'REP', link: '/srep' },
         { icon: 'bi-file-spreadsheet', text: 'STM', link: '/sstm' },
         { icon: 'bi-cash-coin', text: 'เงินโอน', link: '/smoney' },

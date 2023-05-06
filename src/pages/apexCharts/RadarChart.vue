@@ -26,9 +26,25 @@ export default defineComponent({
       chart: {
         id: 'chart',
         type: 'radar',
+        foreColor: 'white',
         toolbar: {
           show: true,
         },
+        dropShadow: {
+          enabled: true,
+          blur: 1,
+          left: 1,
+          top: 1,
+        },
+      },
+      stroke: {
+        width: 2,
+      },
+      fill: {
+        opacity: 0.1,
+      },
+      markers: {
+        size: 0,
       },
       xaxis: {
         categories: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -37,8 +53,12 @@ export default defineComponent({
 
     const chartSeries = [
       {
-        name: 'series-1',
+        name: 'ความทันเวลา',
         data: [90, 15, 77, 30, 99, 45],
+      },
+      {
+        name: 'ความสมบูรณ์',
+        data: [70, 25, 37, 90, 19, 55],
       },
     ];
 
