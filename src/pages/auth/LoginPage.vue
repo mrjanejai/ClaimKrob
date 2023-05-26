@@ -133,18 +133,7 @@
             class="q-px-sm"
           >
             <q-card-section>
-              <q-input
-                :readonly="loading"
-                outlined
-                v-model="email"
-                type="email"
-                :label="t('base.email')"
-                :rules="[
-                  (val) =>
-                    (val && val.length > 0 && validateEmail(val)) ||
-                    t('error.emailValidate'),
-                ]"
-              >
+              <q-input :readonly="loading" outlined v-model="username">
                 <template v-slot:prepend>
                   <q-icon :name="biEnvelope" color="grey-9" />
                 </template>
@@ -231,8 +220,9 @@ const { singin } = AuthenService();
 const { setAuthenticationCookies, destroyAuthDataAndRedirect } = useAuth();
 const { t } = useLang();
 const cardHeight = ref('700px');
-const email = ref<string | null>('admin@mydomain.com');
-const password = ref<string | null>('1234');
+// const email = ref<string | null>('admin@mydomain.com');
+const username = ref<string | null>('admin4');
+const password = ref<string | null>('@wch3131');
 const showPassword = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const loginForm = ref(null);
@@ -249,11 +239,8 @@ const onSubmit = async () => {
   console.log('onSubmit');
   loading.value = true;
   const response = await singin({
-    user: {
-      email: email.value,
-      password: password.value,
-      loginForm: 1,
-    },
+    username: username.value,
+    password: password.value,
   });
   loading.value = false;
   if (response.authenticationToken) {
@@ -264,7 +251,7 @@ const onSubmit = async () => {
   }
 };
 const onReset = () => {
-  email.value = null;
+  username.value = null;
   password.value = null;
   showPassword.value = false;
 };

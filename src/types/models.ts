@@ -116,6 +116,10 @@ export interface LoginRequest {
     loginForm: IPlatForm;
   };
 }
+export interface LoginRequest2 {
+  username?: string | null;
+  password?: string | null;
+}
 export interface RefreshTokenRequest {
   refreshToken: {
     refreshToken?: string | null;
