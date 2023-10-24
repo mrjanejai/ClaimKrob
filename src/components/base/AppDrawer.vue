@@ -173,6 +173,39 @@
             </q-expansion-item>
           </q-list>
         </div>
+        <!--  -->
+        <div class="q-mt-md q-mb-xs">
+          <q-list class="rounded-borders">
+            <q-expansion-item
+              expand-separator
+              label="กองทุนนอก"
+              class="text-weight-bold text-uppercase"
+              icon="bi-currency-exchange"
+            >
+              <q-card>
+                <q-card-section>
+                  <q-item
+                    v-for="link in links4"
+                    :key="link.text"
+                    :to="link.link"
+                    v-ripple
+                    clickable
+                  >
+                    <q-item-section avatar>
+                      <q-icon
+                        :color="$q.dark.isActive ? 'white' : 'black'"
+                        :name="link.icon"
+                      />
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </q-list>
+        </div>
         <!-- <q-separator class="q-mt-md q-mb-xs" />
         <q-item-label header class="text-weight-bold text-uppercase">
           Seamless
@@ -201,7 +234,7 @@
               <q-card>
                 <q-card-section>
                   <q-item
-                    v-for="link in links4"
+                    v-for="link in links5"
                     :key="link.text"
                     :to="link.link"
                     v-ripple
@@ -322,19 +355,26 @@ export default defineComponent({
       ],
       links2: [
         { icon: 'bi-check2-circle', text: 'ตรวจสอบกองทุน', link: '/echeck' },
-        { icon: 'bi-file-spreadsheet', text: 'สถานะการเคลม', link: '/erep' },
+        //{ icon: 'bi-file-spreadsheet', text: 'สถานะการเคลม', link: '/erep' },
         { icon: 'bi-file-spreadsheet', text: 'REP', link: '/erep' },
         { icon: 'bi-file-spreadsheet', text: 'STM', link: '/estm' },
         { icon: 'bi-cash-coin', text: 'เงินโอน', link: '/emoney' },
       ],
       links3: [
         { icon: 'bi-check2-circle', text: 'ตรวจสอบกองทุน', link: '/scheck' },
-        { icon: 'bi-file-spreadsheet', text: 'สถานะการเคลม', link: '/erep' },
+        //{ icon: 'bi-file-spreadsheet', text: 'สถานะการเคลม', link: '/erep' },
         { icon: 'bi-file-spreadsheet', text: 'REP', link: '/srep' },
         { icon: 'bi-file-spreadsheet', text: 'STM', link: '/sstm' },
         { icon: 'bi-cash-coin', text: 'เงินโอน', link: '/smoney' },
       ],
       links4: [
+        { icon: 'bi-check2-circle', text: 'ตรวจสอบกองทุน', link: '/scheck' },
+        //{ icon: 'bi-file-spreadsheet', text: 'สถานะการเคลม', link: '/erep' },
+        { icon: 'bi-file-spreadsheet', text: 'REP', link: '/srep' },
+        { icon: 'bi-file-spreadsheet', text: 'STM', link: '/sstm' },
+        { icon: 'bi-cash-coin', text: 'เงินโอน', link: '/smoney' },
+      ],
+      links5: [
         {
           icon: 'bi-arrow-clockwise',
           text: 'นำเข้าข้อมูลหลัก',

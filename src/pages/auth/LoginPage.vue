@@ -41,7 +41,7 @@
                   style="height: 175px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
-                  แต่ละปีกองเพิ่มมากขึ้นเรื่อยๆ และเปลี่ยนแปลงไม่จบสิ้น
+                  ในแต่ละปีกองทุนเพิ่มมากขึ้นเรื่อยๆ และเปลี่ยนแปลงไม่จบสิ้น
                 </div>
               </q-carousel-slide>
               <q-carousel-slide
@@ -62,7 +62,8 @@
                   style="height: 175px; width: auto"
                 />
                 <div class="text-subtitle1 q-mt-md text-center">
-                  เมื่อสามารถติดตามได้ทุกกองทุน โรงพยาบาลจะไม่ขาดทุนอีกต่อไป
+                  เมื่อสามารถติดตามกองทุนได้ทุกกองทุน
+                  โรงพยาบาลจะไม่ขาดทุนอีกต่อไป
                 </div>
               </q-carousel-slide>
             </q-carousel>
