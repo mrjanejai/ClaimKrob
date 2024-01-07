@@ -112,7 +112,7 @@
           <q-list class="rounded-borders">
             <q-expansion-item
               expand-separator
-              label="e-claim"
+              label="ผู้ป่วยใน"
               class="text-weight-bold text-uppercase"
               icon="bi-currency-exchange"
             >
@@ -145,7 +145,7 @@
           <q-list class="rounded-borders">
             <q-expansion-item
               expand-separator
-              label="Seamless"
+              label="ผู้ป่วยนอก"
               class="text-weight-bold text-uppercase"
               icon="bi-currency-exchange"
             >

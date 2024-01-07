@@ -3,7 +3,7 @@
     <div class="q-pa-md row items-start q-gutter-md">
       <q-card class="my-card bg-secondary text-white">
         <q-card-section>
-          <div class="text-h6">นำเข้า REP E-Claim</div>
+          <div class="text-h6">นำเข้า เงินโอน E-Claim</div>
         </q-card-section>
         <q-card-section>
           <q-uploader

@@ -222,8 +222,8 @@ const { setAuthenticationCookies, destroyAuthDataAndRedirect } = useAuth();
 const { t } = useLang();
 const cardHeight = ref('700px');
 // const email = ref<string | null>('admin@mydomain.com');
-const username = ref<string | null>('admin4');
-const password = ref<string | null>('@wch3131');
+const username = ref<string | null>('admin');
+const password = ref<string | null>('@wch33');
 const showPassword = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const loginForm = ref(null);
@@ -243,8 +243,9 @@ const onSubmit = async () => {
     username: username.value,
     password: password.value,
   });
+  console.log('signin', response);
   loading.value = false;
-  if (response.authenticationToken) {
+  if (response.token) {
     setAuthenticationCookies(response);
     loading.value = false;
     // redirect to index page

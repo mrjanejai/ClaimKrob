@@ -5,8 +5,6 @@ import {
   AppAuthTokenKey,
   AppAuthTokenCreatedKey,
   ExpireCookieDays,
-  AppAuthRefeshTokenKey,
-  AppAuthTokenExpireKey,
 } from 'src/utils/constant';
 export const isNumber = (value: string | number): boolean => {
   return value != null && value !== '' && !isNaN(Number(value.toString()));
@@ -47,21 +45,10 @@ export const setAuthCookies = (
   authResponse: RefreshTokenResponse
 ) => {
   if (cookies) {
-    cookies.set(AppAuthTokenKey, authResponse.authenticationToken, {
+    cookies.set(AppAuthTokenKey, authResponse.token, {
       expires: addDateByDays(ExpireCookieDays),
       path: '/',
     });
-
-    cookies.set(AppAuthRefeshTokenKey, authResponse.refreshToken, {
-      expires: addDateByDays(ExpireCookieDays),
-      path: '/',
-    });
-
-    cookies.set(AppAuthTokenExpireKey, authResponse.expiresAt, {
-      expires: addDateByDays(ExpireCookieDays),
-      path: '/',
-    });
-
     cookies.set(AppAuthTokenCreatedKey, Date.now().toString(), {
       expires: addDateByDays(ExpireCookieDays),
       path: '/',

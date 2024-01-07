@@ -23,7 +23,8 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'erep',
-        component: () => import('@/pages/funds/ERepUpload.vue'),
+        component: () => import('@/pages/funds/UploadApi.vue'),
+        //component: () => import('@/pages/funds/ERepUpload.vue'),
       },
       {
         path: 'estm',
@@ -31,7 +32,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'emoney',
-        component: () => import('@/pages/IndexPage.vue'),
+        component: () => import('@/pages/funds/EMoneyUpload.vue'),
       },
       {
         path: 'scheck',
@@ -62,6 +63,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'theme', component: () => import('@/pages/ThemePage.vue') },
       { path: 'fetch-data', component: () => import('@/pages/FetchData.vue') },
       { path: 'tutor1', component: () => import('@/pages/TutorPage1.vue') },
+      { path: 'test', component: () => import('@/pages/FetchData.vue') },
     ],
   },
   {
