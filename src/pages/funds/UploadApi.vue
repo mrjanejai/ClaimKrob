@@ -12,7 +12,8 @@
             :accept="'.xlsx,.xls'"
             :auto-upload="false"
             :hide-upload-btn="true"
-            @added="file = $event[0]"
+            @added="onFilesAdded"
+            multiple
           >
             <template v-slot:header="scope">
               <div class="row no-wrap items-center q-pa-sm q-gutter-xs">
@@ -62,7 +63,7 @@
                 <q-btn
                   v-if="scope.canUpload"
                   icon="bi-cloud-arrow-up-fill"
-                  :disable="!file"
+                  :disable="!files"
                   @click="uploadFile"
                   :loading="loading"
                   round
@@ -88,7 +89,7 @@
           <div>จำนวนข้อมูลทั้งหมด: {{ data.length }}</div>
           <!-- <q-table :rows="data" :loading="loading" :columns="columns"> </q-table> -->
           <br />
-          <q-btn color="primary" @click="confirm"
+          <q-btn color="primary" @click="confirm" disable
             >Save To Database</q-btn
           ></q-card-section
         >
@@ -859,6 +860,26 @@ const columns: any[] = [
     sortable: true,
   },
 ];
+const files = ref<File[]>([]);
+
+const onFilesAdded = (addedFiles: readonly any[]) => {
+  // Make a copy of addedFiles and assign it to files
+  files.value = [...addedFiles];
+};
+
+const uploadFiles = async () => {
+  if (files.value.length > 0) {
+    loading.value = true;
+    for (const file of files.value) {
+      await parseFile(file);
+    }
+    loading.value = false;
+  }
+};
+
+const uploadFile = async () => {
+  await uploadFiles();
+};
 
 const parseFile = (file: File) => {
   const reader = new FileReader();
@@ -869,7 +890,24 @@ const parseFile = (file: File) => {
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const range = XLSX.utils.decode_range(worksheet['!ref']);
       const sheetData = [];
-      for (let rowNum = 8; rowNum <= range.e.r; rowNum++) {
+      let runNum = 7;
+      // Check if the filename contains %_IP_% or %_IPLGO_%
+      const fileName = file.name;
+      console.log('fileName:', fileName);
+      if (
+        fileName.split('_').findIndex((x) => x === 'IP') == 2 ||
+        fileName.split('_').findIndex((x) => x === 'IPSTP') == 2
+      ) {
+        runNum = 8;
+      } else if (
+        fileName.split('_').findIndex((x) => x === 'IPLGO') == 2 ||
+        fileName.split('_').findIndex((x) => x === 'IPBKK') == 2 ||
+        fileName.split('_').findIndex((x) => x === 'IPCS') == 2
+      ) {
+        runNum = 7;
+      }
+
+      for (let rowNum = runNum; rowNum <= range.e.r; rowNum++) {
         const rowData: any = {};
         let emptyRowFound = false;
 
@@ -891,10 +929,12 @@ const parseFile = (file: File) => {
         }
 
         sheetData.push(rowData);
-        //console.log('sheetData:', sheetData);
+        //console.log('rowData:', rowData);
       }
 
+      //console.log('sheetData:', sheetData);
       updateData(sheetData);
+      save();
     }
   };
   reader.onerror = () => {
@@ -916,19 +956,19 @@ const updateData = (sheetData: Record<string, string>[]) => {
   //console.log('data:', data.value);
 };
 
-const uploadFile = () => {
-  if (file.value) {
-    loading.value = true;
-    parseFile(file.value); // This should update the data.value inside reader.onload
-    loading.value = false;
-  }
-};
+// const uploadFile = () => {
+//   if (file.value) {
+//     loading.value = true;
+//     parseFile(file.value); // This should update the data.value inside reader.onload
+//     loading.value = false;
+//   }
+// };
 
 const save = async () => {
   try {
     //console.log('data:', data.value);
     const jsondata = JSON.stringify(data.value);
-    console.log('jsondata:', jsondata);
+    //console.log('jsondata:', jsondata);
     //for (const item of jsondata) {
     const response = await saveProcess(jsondata);
     console.log('response:', response);
@@ -939,7 +979,7 @@ const save = async () => {
 };
 
 const saveProcess = async (item: any): Promise<any> => {
-  console.log('item:', item);
+  //console.log('item:', item);
   const response = await uploadApi(item);
   return new Promise((resolve) => {
     resolve(response);
@@ -949,7 +989,7 @@ const confirm = async () => {
   const conf = await WeeConfirm(t('app.monogram'), t('base.uploadFile'));
   if (conf) {
     WeeLoader();
-    await save();
+    await uploadFile();
     WeeToast('Confirm', { type: 'positive' });
     // ทำการ delay 1.5 วินาที
     setTimeout(() => {
